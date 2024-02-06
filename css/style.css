@@ -1,0 +1,25 @@
+
+#invader {
+    display:grid;
+    grid-template-columns:repeat(10,40px);
+    grid-template-rows: repeat(10,40px);
+    justify-content: center;
+}
+
+.styleGrid {
+    background-color: grey;
+    border: 1px solid black;
+}
+
+.black {
+    background-color: black;
+}
+
+.configuration { 
+    display: flex;
+     justify-content: center;
+     margin-bottom: 20px;
+
+
+    
+}
