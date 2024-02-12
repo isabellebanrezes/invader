@@ -19,7 +19,9 @@
     display: flex;
      justify-content: center;
      margin-bottom: 20px;
+}
 
-
-    
+.grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
