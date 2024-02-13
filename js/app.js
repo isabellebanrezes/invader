@@ -1,84 +1,40 @@
-// ton code ici
+// ETAPE N°1 GENERATION D'UNE GRILLE 8 x 8 - FONCTION drawbOARD
 
-// 1/ Création de la grille avec des cases:
+let gridSize = 8;
+let pixelSize = 50;
 
-const formParent = document.getElementsByClassName("configuration")[0]; // On récupère la classe "configuration" dans le dom
+// Element container pour notre grille de pixels
 
-const validateButton = document.createElement('button');
-const textInput = document.createElement('input');
-const textPixel = document.createElement('input');
+const form = document.querySelector(".configuration");
 
-textInput.setAttribute("id",'valueInput');
-validateButton.classList.add('buttonClick');
-textPixel.setAttribute("id",'valuePixel');
+// Création des lignes de la grille
 
-formParent.appendChild(textInput);
-formParent.appendChild(textPixel);
-formParent.appendChild(validateButton);
+function drawBoard() {
+  // On point la div avec la classe "invader"
+  const board = document.getElementById("invader");
+  console.log(board);
 
-// Fonction entrée de la taille de la grille par l'utilisateur
-function inputUser(event) {
-    event.preventDefault();
-    const sizeByUser = document.getElementById("valueInput");
-    const x = sizeByUser.value;
-    const pixelByUser = document.getElementById("valuePixel");
-    const y = pixelByUser.value; 
-    createGrid(x, y);
-    console.log(x);
-    console.log(sizeByUser);
+  // Nettoyage du tableau
+  board.innerHTML = " ";
+
+  for (let i = 0; i < gridSize; i++) {
+    // On va créer un nouvel élèment (une "div") sous la div avec la classe "invader"
+    let newLigne = document.createElement("div");
+    // On va ajouter une classe (ligne) à cette "div"
+    newLigne.classList.add("ligne");
+
+    for (let j = 0; j < gridSize; j++) {
+      let pixel = document.createElement("div");
+      pixel.classList.add("pixel");
+      pixel.style.width = pixelSize + "px";
+      pixel.style.height = pixel.Size + "px";
+      pixel.style.color = "red";
+
+      newLigne.appendChild(pixel);
+
+      board.appendChild(newLigne);
+    }
+  }
 }
 
-validateButton.addEventListener("click" , inputUser); // Appel de la fonction inputuser
-
-validateButton.textContent="Valider";
-textInput.setAttribute("text", "number");
-textInput.setAttribute("placeholder", "Entrez la taille de la grille");
-
-
-// Fonction 
-
-function createGrid(x, y) {
-    const parentGrid = document.getElementById('invader');
-    parentGrid.innerHTML = "";
-
-    parentGrid.style.gridTemplateColumns = `repeat(${x}, ${y}px)`;
-    parentGrid.style.gridTemplateRows = `repeat(${x}, ${y}px)`;
-
-
-    for (let i = 0; i < ((x)**2);i++) {
-       const createDiv = document.createElement('div');
-
-       parentGrid.appendChild(createDiv);
-
-       createDiv.classList.add('styleGrid');
-    }
-    
-    AddListener(); //Appel de la fonction Addlsitener (ecouteur)
-}
-
-
-// Fonction pour changer la couleur
-function colorGrid(event) {
-    const eventValue = event.target;
-
-    if (eventValue.classList.contains("black")) {
-        eventValue.classList.remove("black")
-    } else {
-        eventValue.classList.add("black");
-    }
-    console.log(event); 
-} 
-
-
-// Fonction pour ecoute du click
-function AddListener() {
-    const colorClick = document.getElementsByClassName("styleGrid");
-    let i = 0;
-    while (i < colorClick.length) {
-    colorClick[i].addEventListener("click" , colorGrid);
-    i++;
-    }
-}
-
-
-
+drawBoard();
