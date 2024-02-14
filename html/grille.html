@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille Grid CSS</title>
+
+    <style>
+        .grille{
+            display:grid;
+            /* Ranger  en colonne avec ou sans la fonction repeat */
+            /* grid-template-columns: 100px 100px 100px; */
+            /* grid-template-columns: repeat(3,100px); */
+            /* en fraction = 1 fraction de l'espace disponible de notre contener (grille)  - l'espace disponible est divisé en 8 parts égales */
+            grid-template-columns: repeat(8, 1fr);
+
+            /* pour faire des colonnes plus large on ajoute fr : il pendra les 2/3 de l'espace par rapport aux autres 
+            grid-template-colomns = 1fr 2fr 1 fr; */
+            /* pour le responsive on peut mettre une valeur minimum  repeat(3, minmax(200px, 1fr) */ 
+            /* les lignes = rows : grid-template-rows: repeat(8, 200px); 8 = nombre de rangée et 1fr c'est la hauteur*/
+            grid-template-rows: repeat(2, 200px);
+            /* les 6 colonnes sont en css implicite : grid auto flow */
+            grid-auto-flow: row;
+            /* pour éviter le over-flow on utilise le min max */
+            grid-auto-rows: minmax(50px, auto);
+
+            /* pour indiquer le début et la fin des colonnes pris en compte - grid-column-start : 1; et grid-colomn-end: 3; */
+            grid-gap: 5px 5px;
+
+        }
+
+        .card:nth-child(14) { 
+            /* grid-column-start: 1;
+            grid-column-end: 3; */
+            grid-column: 1 / span 2 ;
+        }
+
+        .red{
+            background: green;
+            border-radius: 5px;
+            /*height:20px; */
+        }
+
+        .child {
+            background: red;
+            border-radius: 5px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="grille"> 
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="child">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+        <div class="red">1</div>
+        <div class="red">2</div>
+        <div class="red">3</div>
+        <div class="red">4</div>
+        <div class="red">5</div>
+        <div class="red">6</div>
+        <div class="red">7</div>
+        <div class="red">8</div>
+    </div>
+
+</body>
+</html>
