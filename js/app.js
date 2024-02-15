@@ -1,4 +1,4 @@
-// ETAPE N°1 GENERATION D'UNE GRILLE 8 x 8 - FONCTION drawbOARD
+// ETAPE N°1 GENERATION D'UNE GRILLE 8x8 - FONCTION drawbOARD
 
 // Element container pour notre grille de pixels
 
