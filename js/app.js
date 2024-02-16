@@ -40,32 +40,3 @@ function numberPixel() {
   pixel.classList.add("pixel");
   pixel.style.height = pixelSize + "px";
 }
-
-/* function drawBoard() {
- 
-
-  // Nettoyage du tableau - remise à zéro
-  board.innerHTML = " ";
-
-  // Boucle pour générer les lignes de la grille
-  for (let i = 0; i < gridSize; i++) {
-    // On va créer un nouvel élèment (une "div") sous la div avec la classe "invader"
-    let ligne = document.createElement("div");
-    // On va ajouter une classe (ligne) à cette "div"
-    ligne.classList.add("ligne");
-
-    for (let j = 0; j < gridSize; j++) {
-      let pixel = document.createElement("div");
-      pixel.classList.add("pixel");
-      pixel.style.width = pixelSize + "px";
-      pixel.style.height = pixel.Size + "px";
-      pixel.style.color = "red";
-
-      newLigne.appendChild(pixel);
-
-      board.appendChild(ligne);
-    }
-  }
-}
-
-drawBoard(); */
