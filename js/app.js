@@ -14,14 +14,14 @@ let pixelSize = 50;
 
 function numberLigne() {
   // On pointe la div avec la class "invader"
-  const contener = document.getElementById("invader");
+  const board = document.getElementById("invader");
   // On Créée une nouvelle "div"
-  const ligne = document.createElement("div");
+  let ligne = document.createElement("div");
   // On ajoute une "class"
   ligne.classList.add("ligne");
   console.log(ligne);
 
-  contener.appendChild(ligne);
+  board.appendChild(ligne);
   console.log(ligne);
 
   return ligne;
