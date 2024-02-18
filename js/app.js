@@ -1,10 +1,10 @@
 // ETAPE N°1 GENERATION D'UNE GRILLE 8x8 - FONCTION drawbOARD
 
-// Element container pour notre grille de pixels
-
+// Création des formulaires pour le choix de la taille de la grille et le nombre de pixel
+// On pointe la classe configuration car c'es une balise type "formulaire"
 const form = document.querySelector(".configuration");
 
-//  ________________________________  //
+// Element container pour notre grille de pixels
 
 // Fonction qui génère un nombre de ligne
 
