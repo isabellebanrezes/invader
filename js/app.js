@@ -1,4 +1,4 @@
-// ETAPE N°1 GENERATION D'UNE GRILLE 8x8 - FONCTION drawbOARD
+// GAME INVADER
 
 // Création des 3 formulaires pour le choix de la taille de la grille, le nombre de pixel et validation
 
@@ -6,7 +6,7 @@
 
 // 1 - On pointe la classe configuration car c'es une balise type "formulaire"
 const form = document.querySelector(".configuration");
-form.style.background = "#CCFFCC";
+//form.style.background = "#CCFFCC";
 
 // 2 - Création de l'input pour la taille de la grille
 const sizeGrid = document.createElement("input");
@@ -44,6 +44,8 @@ validboutton.style.background = "#CC66FF";
 validboutton.style.borderRadius = " 0px 10px 10px 0px";
 // 3 - Affichage dans le DOM
 form.appendChild(validboutton);
+
+// Récupéreation des valeurs entrées dans les input par le joueur
 
 // Element container pour notre grille de pixels
 
