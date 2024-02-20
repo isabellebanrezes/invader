@@ -19,10 +19,8 @@
     display: flex;
      justify-content: center;
      margin-bottom: 300px;
+     padding-top: 20px;
 }
 
-.valueInput {
-    text-align: center;
-}
 
 

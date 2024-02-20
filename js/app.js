@@ -63,29 +63,34 @@ sizePixel.addEventListener("input", (e) => {
 });
 // Récupérer le click sur le bouton "valider"
 let clickValidation;
-validboutton.addEventListener("click", (e) => {
+form.addEventListener("click", (e) => {
   e.preventDefault(); // Permet de ne pas recharger la page - un formulaire change de page quand on clique dessus (sur "valider")
   clickValidation = e.target.value;
   console.log(clickValidation);
 });
 
-// Génération de la grille de la grille
+// Génération de la grille
 
 // Fonction drawGrid qui génère un nombre de ligne avec le nombre  de pixel choisi
 
 const board = document.getElementById("invader");
 
-function drawGrid() {
+function drawGrid(numberGrid, numberPixel) {
   // Boucle pour générer les lignes de la grille
   for (let i = 0; i < numberGrid; i++) {
     // On créé une "div" pour faire les lignes
     let ligne = document.createElement("div");
     // On ajoute une class à cette div
     ligne.classList.add(ligne);
+    // On ajoute la ligne avec les pixel dans le DOM
+    board.appendChild(ligne);
+
+    return ligne;
   }
 
   // Boucle pour générer les pixels de la grille
-  for (let j = 0; j < numberPixel; j++) {
+  for (let j = 0; j < numberGrid; j++) {
+    // Création d'un pixel
     let pixel = document.createElement("div");
     // On ajoute un class
     pixel.classList.add("pixel");
@@ -95,8 +100,10 @@ function drawGrid() {
     // on ajoute ce pixel dans le DOM
     ligne.appendChild(pixel);
 
+    pixel.addEventListener("click");
     // On ajoute la ligne avec les pixel dans le DOM
+    board.appendChild(ligne);
   }
 }
 
-drawGrid();
+drawGrid(numberGrid, numberPixel);
