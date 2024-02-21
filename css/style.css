@@ -1,26 +1,41 @@
 
 #invader {
-    display:grid;
+    /* display:grid;
     grid-template-columns:repeat(10,40px);
-    grid-template-rows: repeat(10,40px);
+    grid-template-rows: repeat(10,40px); */
+    background-color: rgb(28, 71, 228);
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.ligne {
+    display: flex;
     justify-content: center;
 }
 
-.styleGrid {
-    background-color: grey;
-    border: 1px solid black;
+.button {
+    margin-left: 10px;
 }
 
-.black {
-    background-color: black;
-}
 
 .configuration { 
     display: flex;
      justify-content: center;
-     margin-bottom: 50px;
-     padding-top: 20px;
+     padding: 20px;
+     background-color: rgb(38, 40, 109);
 }
 
+.palette {
+    border : 1px soldi black;
+}
+
+
+.palette_color {
+    width : 50px;
+    height : 50px;
+    border-radius: 50px;
+    border-radius: 2px solid black;
+}
 
 

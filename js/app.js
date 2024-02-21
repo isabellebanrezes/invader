@@ -1,109 +1,120 @@
-// GAME INVADER
+// ----------------------------------------------------
+// ############ INVADER #############
+// ----------------------------------------------------
 
-// Création des 3 formulaires avec les 2 "input" pour le choix de la taille de la grille, le nombre de pixel et vet un bouton pour validation
+//CREATION D'UN OBJET "app"
+// Les variables deviennent des propriétés
+// Les fonctions deviennnet des méthodes
+// Ranger les fonction à "initialiser" dans l'application dans une méthode "init"
+// Appeler la fonction app.init() pour lancer le programme
 
-// I - Input pour la taille de ma grille
+//__________________________________________________
+// création d'un objet "app"
+//_________________________________________________
 
-// 1 - On pointe la class "configuration" c'est la balise type "formulaire" déjà créée - on va y insérer les 2 input et le bouton de validation
-const form = document.querySelector(".configuration");
-//form.style.background = "#CCFFCC";
+const app = {
+  // Les variables sont transformées en propriété
 
-// 2 - Création de l'input pour la taille de la grille
-const sizeGrid = document.createElement("input");
-// 3 - On va insérer ce texte dans l'input "Taille de la grille"
-sizeGrid.setAttribute("placeholder", "Taille de la grille"); // On insére un placeholder dans l'input
-sizeGrid.setAttribute("id", "valueInput"); // On donne un "id" à cet input
-sizeGrid.style.textAlign = "center";
-sizeGrid.style.height = " 35px";
-sizeGrid.style.borderRadius = "10px 0px 0px 10px";
-sizeGrid.style.background = "#33CCCC";
-// 4 - On affiche le nouvel input dans le DOM
-form.appendChild(sizeGrid);
+  sizeGrid: 8,
+  sizePixel: 60,
+  form: document.querySelector(".configuration"),
+  grid: document.querySelector("#invader"),
 
-// II - Input pour le nombre de pixels
+  //_______________________________________________________
+  // Les fonctions sont rangées dans la méthode "init()"
+  //_______________________________________________________
 
-// 1 - Création de l'input pour le nombre de pixel
-sizePixel = document.createElement("input");
-// 2 - Insertion du texte dans l'input
-sizePixel.setAttribute("placeholder", "Nombre de pixel");
-sizePixel.setAttribute("id", "valuePixel");
-sizePixel.style.textAlign = "center";
-sizePixel.style.background = "#00CCFF";
-// 3 - Affichage du formulaure "nombre de pixel" dans le DOM
-form.appendChild(sizePixel);
+  init: function () {
+    // creation de la grille
+    app.createGrid(app.sizeGrid, app.sizePixel);
 
-// III - Création d'un bouton "validation"
-// 1 - Création du bouton
-validboutton = document.createElement("button");
-// 2 - Création d'une classe pour le bouton et ajout de texte dans cette classe
-validboutton.classList.add("buttonValid");
-validboutton.textContent = "valider";
-validboutton.style.background = "#FFCCFF";
-validboutton.style.borderRadius = " 0px 10px 10px 0px";
-validboutton.style.width = "60px";
-// 3 - Affichage dans le DOM
-form.appendChild(validboutton);
+    // creation du formulaire
+    app.createForm();
+  },
 
-// Récupération des valeurs entrées dans les inputs par le joueur dans les inputs
+  // creation des lignes
+  createLigne: function (grid) {
+    const ligne = document.createElement("div");
 
-// Récupérer l'Input sizeGrid
-let numberGrid;
-sizeGrid.addEventListener("input", (e) => {
-  //console.log(e.target.value);
-  numberGrid = e.target.value;
-  console.log(numberGrid);
-});
+    ligne.classList.add("ligne");
 
-// Récupérer l'input sizePixel
-let numberPixel;
-sizePixel.addEventListener("input", (e) => {
-  //console.log(e.target.value);
-  numberPixel = e.target.value;
-  console.log(numberPixel);
-});
-// Récupérer le click sur le bouton "valider"
-let clickValidation;
-form.addEventListener("click", (e) => {
-  e.preventDefault(); // Permet de ne pas recharger la page - un formulaire change de page quand on clique dessus (sur "valider")
-  clickValidation = e.target.value;
-  console.log(clickValidation);
-});
-
-// Génération de la grille
-
-// Fonction drawGrid qui génère un nombre de ligne avec le nombre  de pixel choisi
-
-const board = document.getElementById("invader");
-
-function drawGrid(numberGrid, numberPixel) {
-  // Boucle pour générer les lignes de la grille
-  for (let i = 0; i < numberGrid; i++) {
-    // On créé une "div" pour faire les lignes
-    let ligne = document.createElement("div");
-    // On ajoute une class à cette div
-    ligne.classList.add(ligne);
-    // On ajoute la ligne avec les pixel dans le DOM
-    board.appendChild(ligne);
+    grid.appendChild(ligne);
 
     return ligne;
-  }
+  },
+  // creation des pixels
+  createPixel: function (ligne, sizePixel) {
+    const pixel = document.createElement("div");
 
-  // Boucle pour générer les pixels de la grille
-  for (let j = 0; j < numberGrid; j++) {
-    // Création d'un pixel
-    let pixel = document.createElement("div");
-    // On ajoute un class
     pixel.classList.add("pixel");
-    // On ajoute du style : largeur et hauteur
-    pixel.style.width = numberPixel + "px";
-    pixel.style.height = numberPixel + "px";
-    // on ajoute ce pixel dans le DOM
+    pixel.style.width = sizePixel + "px";
+    pixel.style.height = sizePixel + "px";
+    pixel.style.background = "gray";
+    pixel.style.border = "1px solid black";
+
     ligne.appendChild(pixel);
+  },
 
-    pixel.addEventListener("click");
-    // On ajoute la ligne avec les pixel dans le DOM
-    board.appendChild(ligne);
-  }
-}
+  // génération de la grille
+  createGrid: function (sizeGrid, sizePixel) {
+    for (let i = 0; i < sizeGrid; i++) {
+      const ligne = app.createLigne(app.grid);
 
-drawGrid(numberGrid, numberPixel);
+      for (let j = 0; j < sizeGrid; j++) {
+        app.createPixel(ligne, sizePixel);
+      }
+    }
+  },
+
+  //creation du formulaire
+
+  // creation des inputs
+  createInput: function (placeholder) {
+    const input = document.createElement("input");
+
+    input.type = "number";
+    input.style.textAlign = "center";
+    input.style.height = " 55px";
+    input.style.background = "#33CCCC";
+    input.style.fontSize = "20px";
+    input.placeholder = placeholder;
+
+    app.form.appendChild(input);
+  },
+
+  // Formulaire complet avec les 2 input et le bouton - fonction createForm
+
+  createForm: function () {
+    app.createInput("INVADER GAME");
+    app.createInput("Taille de la grille");
+    app.createInput("Taille des pixels");
+
+    const button = document.createElement("button");
+    button.classList.add("button");
+
+    button.textContent = "Valider";
+    button.style.borderRadius = "10px 10px 10px 10px";
+    button.style.width = "120px";
+    button.style.fontSize = "20px";
+
+    app.form.appendChild(button);
+    app.form.addEventListener("submit", app.clicForm);
+  },
+
+  // ECOUTEUR D'EVENEMENTS
+
+  // Ecouteur pour déclencher la création de la grille
+
+  clicForm: function (e) {
+    e.preventDefault();
+    app.grid.textContent = "";
+
+    const numberGrid = Number(e.target[0].value);
+
+    const numberPixel = Number(e.target[1].value);
+
+    app.createGrid(numberGrid, numberPixel);
+  },
+};
+
+app.init();

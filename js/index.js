@@ -1,4 +1,4 @@
-// ############ INVERDER #############
+// ############ INVADER #############
 
 /* ### PLAN ######
  * CREATION DU FORMULAIRE
@@ -31,8 +31,8 @@ const form = document.querySelector(".configuration");
 function createInput(placeholder) {
   // On génére un input
   const input = document.createElement("input");
-  // On donne le type "nombre" à notre input
-  input.type = "size";
+  // On donne le type "nombre" à notre input - on aura un curseur pour monter et descendre de 0 à l'infini
+  input.type = "number";
   input.style.textAlign = "center";
   input.style.height = " 55px";
   input.style.background = "#33CCCC";
@@ -108,11 +108,9 @@ let sizeGrid;
 // pour les pixels
 let sizePixel;
 // Sélection de la div "invader" dans le DOM pour y insérer notre grille
-const grid = document.getElementById("invader");
+const grid = document.querySelector("#invader");
 
 // Création fonction pour générer les lignes : createligne
-
-//console.log(grid);
 
 // Fonction createLigne
 function createLigne(grid) {
