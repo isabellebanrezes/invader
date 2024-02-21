@@ -17,7 +17,7 @@
 // 1 formulaire pour le bouton validation
 //____________________________________________________________
 
-// ###############  On va créer 2 fonctions ###################
+// ########## 2 fonctions pour les formulaires ###############
 //_____________________________________________________________
 // Une fonction pour créer les 2 inputs : createInput
 // Une fonction pour créer le groupe de formulaire (les 2 inputs et le bouton) : createForm
@@ -100,6 +100,12 @@ function clicForm(e) {
 // Une fonction pour générer les pixels : createPixel
 //______________________________________
 
+// on créé 2 variables
+// Ligne
+let sizeGrid;
+// pixel
+let sizePixel;
+
 // Création fonction pour générer les lignes : createligne
 
 // Sélection de la div "invader" dans le DOM pour y insérer notre grille
@@ -107,15 +113,17 @@ const grid = document.getElementById("invader");
 console.log(grid);
 
 // Fonction createLigne
-function createLigne() {
+function createLigne(grid) {
   // Creation de la ligne
   const ligne = document.createElement("div");
   // Ajout d'une class pour cette div
   ligne.classList.add("ligne");
   //on affiche la div dans le DOM au niveau
   grid.appendChild(ligne);
-  return row;
+  console.log(ligne);
+  return ligne;
 }
+createLigne(grid);
 
 // Création pour générer les pixels
 
@@ -123,11 +131,16 @@ function createLigne() {
 function createPixel() {
   const pixel = document.createElement("div");
   pixel.classList.add("pixel");
-  pixel.style.witdh = sizePixel + "px";
+  //pixel.classList.add("pixel--gray");
+  pixel.style.witdh = sizeGrid + "px";
   pixel.style.height = sizePixel + "px";
+  pixel.style.background = "#CCFFFF";
+  pixel.style.border = "1px solid black";
 
   grid.appendChild(pixel);
 }
+
+createPixel();
 
 // Création pour générer la grille avec les lignes et les pixels
 
@@ -135,19 +148,13 @@ function createPixel() {
 
 // On va créer une fonction pour générer la grille de ligne et pixel - On a 2 paramètres dans cette fonction : le nombre de ligne et le nombre de pixel
 
-// on créé 2 variables
-// Ligne
-let sizeGrid;
-// pixel
-let sizePixel;
-
 function createGrid(numberGrid, numberPixel) {
   for (let i = 0; i < numberGrid; i++) {
-    const ligne = createGrid(grid);
+    const ligne = createLigne(grid);
     for (let j = 0; j < numberGrid; j++) {
       createPixel(ligne, numberPixel);
     }
   }
 }
 
-createGrid();
+createGrid(ligne, pixel);
