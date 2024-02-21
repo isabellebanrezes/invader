@@ -43,7 +43,7 @@ function createInput(placeholder) {
   form.appendChild(input);
 }
 
-// formulaire complet avec les 2 input et le bouton - fonction createForm
+// Formulaire complet avec les 2 input et le bouton - fonction createForm
 
 function createForm() {
   // creation du formulaire nombre de ligne
@@ -66,13 +66,15 @@ function createForm() {
 
 createForm();
 
+//------------------------------------------------
 // ####### ECOUTEURS EVENEMENTS #########
+//------------------------------------------------
 
 // Ecouteur pour déclencher la création de la grille
 
 // On va créer une fonction clicForm()
 
-function clicForm() {
+function clicForm(e) {
   // Pour ne pas que la page se recharge toute seule !
   e.preventDefault();
   //On vide le conteneur
@@ -80,9 +82,9 @@ function clicForm() {
 
   // On récupère les valeurs des inputs
   // on récupère le nombre de ligne
-  const numberGrid = size(e.target[0].value);
+  const numberGrid = Number(e.target[0].value);
   // On récupère le nombre de pixel
-  const numberPixel = size(e.target[1].value);
+  const numberPixel = Number(e.target[1].value);
 
   createGrid(numberGrid, numberPixel);
 }
@@ -98,12 +100,13 @@ function clicForm() {
 // Une fonction pour générer les pixels : createPixel
 //______________________________________
 
+// Création fonction pour générer les lignes : createligne
+
 // Sélection de la div "invader" dans le DOM pour y insérer notre grille
 const grid = document.getElementById("invader");
 console.log(grid);
 
-// Fonction pour générer les lignes : createLigne
-
+// Fonction createLigne
 function createLigne() {
   // Creation de la ligne
   const ligne = document.createElement("div");
@@ -113,6 +116,22 @@ function createLigne() {
   grid.appendChild(ligne);
   return row;
 }
+
+// Création pour générer les pixels
+
+// Fonction createPixel
+function createPixel() {
+  const pixel = document.createElement("div");
+  pixel.classList.add("pixel");
+  pixel.style.witdh = sizePixel + "px";
+  pixel.style.height = sizePixel + "px";
+
+  grid.appendChild(pixel);
+}
+
+// Création pour générer la grille avec les lignes et les pixels
+
+// Fonction CreateGrid
 
 // On va créer une fonction pour générer la grille de ligne et pixel - On a 2 paramètres dans cette fonction : le nombre de ligne et le nombre de pixel
 
@@ -125,6 +144,10 @@ let sizePixel;
 function createGrid(numberGrid, numberPixel) {
   for (let i = 0; i < numberGrid; i++) {
     const ligne = createGrid(grid);
-    for (let j = 0; j < numberGrid; j++) {}
+    for (let j = 0; j < numberGrid; j++) {
+      createPixel(ligne, numberPixel);
+    }
   }
 }
+
+createGrid();
