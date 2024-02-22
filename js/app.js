@@ -30,6 +30,9 @@ const app = {
 
     // creation du formulaire
     app.createForm();
+
+    // Clic pixel
+    app.clicPixel();
   },
 
   // creation des lignes
@@ -47,17 +50,22 @@ const app = {
     const pixel = document.createElement("div");
 
     pixel.classList.add("pixel");
+    pixel.classList.add("pixel-color");
     pixel.style.width = sizePixel + "px";
     pixel.style.height = sizePixel + "px";
-    pixel.style.background = "gray";
+    //pixel.style.background = "gray";
     pixel.style.border = "1px solid black";
+    pixel;
 
     ligne.appendChild(pixel);
+
+    return pixel;
   },
 
   // génération de la grille
   createGrid: function (sizeGrid, sizePixel) {
     app.createTitle();
+
     for (let i = 0; i < sizeGrid; i++) {
       const ligne = app.createLigne(app.grid);
 
@@ -65,6 +73,7 @@ const app = {
         app.createPixel(ligne, sizePixel);
       }
     }
+    app.clicPixel();
   },
 
   // génération titre
@@ -133,11 +142,18 @@ const app = {
     app.createGrid(numberGrid, numberPixel);
   },
 
-  // Ecouteur de pixel
+  // Ecouteur sur un pixel
 
-  clicPixel: function (e) {
-    const clicPixel = e.target;
-    clicPixel.style.background = "black";
+  clicPixel: function (e, pixel) {
+    const pixels = document.querySelectorAll(".pixel");
+    console.log(pixels);
+    pixels.forEach((pixel) => {
+      pixel.addEventListener("click", (e) => {
+        console.log("clic sur un pixel");
+        pixel.classList.remove("pixel-color");
+        pixel.classList.toggle("pixel-black");
+      });
+    });
   },
 };
 

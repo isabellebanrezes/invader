@@ -14,6 +14,18 @@
     justify-content: center;
 }
 
+
+.pixel-color {
+    background-color: gray;
+}
+
+
+.pixel-black {
+    background-color: black;
+}
+
+
+
 .button {
     margin-left: 10px;
 }
@@ -36,6 +48,9 @@
     padding: 10px;
 
 }
+
+
+
 
 .palette {
     border : 1px soldi black;
