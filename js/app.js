@@ -66,6 +66,22 @@ const app = {
     }
   },
 
+  // génération titre
+  /*createTitle: function (grid) {
+    const title = document.createElement("div");
+    title.classList.add("title");
+    title.textContent = "INVADER GAME";
+    title.style.width = "440px";
+    title.style.height = "50px";
+    title.style.background = "#0099CC";
+    title.style.textAlign = "center";
+    title.style.border = "1px solid black";
+    title.style.borderRadius = "10px 10px 10px 10px";
+    title.style.fontSize = "50px";
+
+    app.grid.appendChild(title);
+  },*/
+
   //creation du formulaire
 
   // creation des inputs
@@ -109,11 +125,18 @@ const app = {
     e.preventDefault();
     app.grid.textContent = "";
 
-    const numberGrid = Number(e.target[0].value);
+    const numberGrid = Number(e.target[1].value);
 
-    const numberPixel = Number(e.target[1].value);
+    const numberPixel = Number(e.target[2].value);
 
     app.createGrid(numberGrid, numberPixel);
+  },
+
+  // Ecouteur de pixel
+
+  clicPixel: function (e) {
+    const clicPixel = e.target;
+    clicPixel.style.background = "black";
   },
 };
 

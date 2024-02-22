@@ -5,7 +5,7 @@
     grid-template-rows: repeat(10,40px); */
     background-color: rgb(28, 71, 228);
     justify-content: center;
-    padding-top: 60px;
+    padding-top: 10px;
     padding-bottom: 40px;
 }
 
@@ -24,6 +24,17 @@
      justify-content: center;
      padding: 20px;
      background-color: rgb(38, 40, 109);
+}
+
+
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    margin-left: 335px;
+    padding: 10px;
+
 }
 
 .palette {
