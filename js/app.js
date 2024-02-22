@@ -57,6 +57,7 @@ const app = {
 
   // génération de la grille
   createGrid: function (sizeGrid, sizePixel) {
+    app.createTitle();
     for (let i = 0; i < sizeGrid; i++) {
       const ligne = app.createLigne(app.grid);
 
@@ -67,7 +68,7 @@ const app = {
   },
 
   // génération titre
-  /*createTitle: function (grid) {
+  createTitle: function (grid) {
     const title = document.createElement("div");
     title.classList.add("title");
     title.textContent = "INVADER GAME";
@@ -80,7 +81,7 @@ const app = {
     title.style.fontSize = "50px";
 
     app.grid.appendChild(title);
-  },*/
+  },
 
   //creation du formulaire
 
