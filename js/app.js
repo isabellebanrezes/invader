@@ -150,7 +150,7 @@ const app = {
     pixels.forEach((pixel) => {
       pixel.addEventListener("click", (e) => {
         console.log("clic sur un pixel");
-        pixel.classList.remove("pixel-color");
+        //pixel.classList.remove("pixel-color");
         pixel.classList.toggle("pixel-black");
       });
     });
