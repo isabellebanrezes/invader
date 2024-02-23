@@ -19,7 +19,9 @@ const app = {
   sizePixel: 60,
   form: document.querySelector(".configuration"),
   grid: document.querySelector("#invader"),
-
+  paletteDiv: document.querySelector(".palette"),
+  styles: ["black", "blue", "yellow", "red", "green"],
+  initialColor: "black",
   //_______________________________________________________
   // Les fonctions sont rangées dans la méthode "init()"
   //_______________________________________________________
@@ -30,9 +32,6 @@ const app = {
 
     // creation du formulaire
     app.createForm();
-
-    // Clic pixel
-    app.clicPixel();
   },
 
   // creation des lignes
@@ -48,7 +47,6 @@ const app = {
   // creation des pixels
   createPixel: function (ligne, sizePixel) {
     const pixel = document.createElement("div");
-
     pixel.classList.add("pixel");
     pixel.classList.add("pixel-color");
     pixel.style.width = sizePixel + "px";
@@ -64,7 +62,10 @@ const app = {
 
   // génération de la grille
   createGrid: function (sizeGrid, sizePixel) {
+    // creation du titre du jeu
     app.createTitle();
+    // creation de la palette
+    app.createPalette();
 
     for (let i = 0; i < sizeGrid; i++) {
       const ligne = app.createLigne(app.grid);
@@ -73,6 +74,7 @@ const app = {
         app.createPixel(ligne, sizePixel);
       }
     }
+
     app.clicPixel();
   },
 
@@ -90,6 +92,37 @@ const app = {
     title.style.fontSize = "50px";
 
     app.grid.appendChild(title);
+  },
+
+  // CREATION DE LA PALETTE DE COULEUR
+
+  // creation de la div pour la palette
+
+  createPalette: function (grid) {
+    const paletteColor = document.createElement("div");
+    paletteColor.classList.add("palette");
+    paletteColor.style.width = "300px";
+    paletteColor.style.height = "40px";
+    paletteColor.style.background = "#99CCFF";
+    paletteColor.style.textAlign = "center";
+    paletteColor.style.fontSize = "30px";
+
+    app.grid.appendChild(paletteColor);
+
+    return paletteColor;
+
+    app.createButtonPalette(paletteColor);
+  },
+
+  // Ajout d'un bouton sur la palette
+
+  createButtonPalette: function (paletteColor) {
+    const buttonPalette = document.createElement("button");
+    buttonPalette.classList.add("button-palette");
+    console.log("buttonPalette");
+    button.textContent = "b";
+
+    app.paletteColor.appendChid(buttonPalette);
   },
 
   //creation du formulaire
@@ -110,7 +143,7 @@ const app = {
 
   // Formulaire complet avec les 2 input et le bouton - fonction createForm
 
-  createForm: function () {
+  createForm: function (form) {
     app.createInput("INVADER GAME");
     app.createInput("Taille de la grille");
     app.createInput("Taille des pixels");
@@ -150,7 +183,6 @@ const app = {
     pixels.forEach((pixel) => {
       pixel.addEventListener("click", (e) => {
         console.log("clic sur un pixel");
-        //pixel.classList.remove("pixel-color");
         pixel.classList.toggle("pixel-black");
       });
     });
@@ -158,3 +190,5 @@ const app = {
 };
 
 app.init();
+
+//

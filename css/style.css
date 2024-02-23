@@ -39,29 +39,30 @@
 }
 
 
-
 .title {
     display: flex;
     justify-content: center;
     margin: 20px;
-    margin-left: 580px;
+    margin-left: 780px;
     padding: 10px;
 
 }
 
-
-
-
 .palette {
-    border : 1px soldi black;
-}
-
-
-.palette_color {
-    width : 50px;
-    height : 50px;
-    border-radius: 50px;
+    border-radius: 10px;
     border-radius: 2px solid black;
+    margin-left: 860px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+   
 }
 
+.button-palette {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 2px solid black;
+
+}
 
