@@ -79,7 +79,7 @@ function clicForm(e) {
   e.preventDefault();
   //On vide la balise avec l'id "invader"
   grid.textContent = "";
-  // On récupère les valeurs des inputs
+  // On récupère les valeurs des inputs (nombre de ligne et pixel entrés par le joueur)
   // on récupère le nombre de ligne
   const numberGrid = Number(e.target[0].value);
   console.log(numberGrid);

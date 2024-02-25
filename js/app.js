@@ -32,6 +32,9 @@ const app = {
 
     // creation du formulaire
     app.createForm();
+
+    // generation palette
+    app.genrationPalette();
   },
 
   // creation des lignes
@@ -48,12 +51,13 @@ const app = {
   createPixel: function (ligne, sizePixel) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.classList.add("pixel-color");
+    pixel.classList.add("pixel--gray");
     pixel.style.width = sizePixel + "px";
     pixel.style.height = sizePixel + "px";
     //pixel.style.background = "gray";
     pixel.style.border = "1px solid black";
-    pixel;
+    // Ajout d'un écouteur d'évènement
+    pixel.addEventListener("click", app.clicPixelColor);
 
     ligne.appendChild(pixel);
 
@@ -64,8 +68,6 @@ const app = {
   createGrid: function (sizeGrid, sizePixel) {
     // creation du titre du jeu
     app.createTitle();
-    // creation de la palette
-    app.createPalette();
 
     for (let i = 0; i < sizeGrid; i++) {
       const ligne = app.createLigne(app.grid);
@@ -74,8 +76,6 @@ const app = {
         app.createPixel(ligne, sizePixel);
       }
     }
-
-    app.clicPixel();
   },
 
   // génération titre
@@ -89,7 +89,7 @@ const app = {
     title.style.textAlign = "center";
     title.style.border = "1px solid black";
     title.style.borderRadius = "10px 10px 10px 10px";
-    title.style.fontSize = "50px";
+    title.style.fontSize = "30px";
 
     app.grid.appendChild(title);
   },
@@ -98,8 +98,9 @@ const app = {
 
   // creation de la div pour la palette
 
-  createPalette: function (grid) {
+  /*  createPalette: function (grid) {
     const paletteColor = document.createElement("div");
+
     paletteColor.classList.add("palette");
     paletteColor.style.width = "300px";
     paletteColor.style.height = "40px";
@@ -110,19 +111,27 @@ const app = {
     app.grid.appendChild(paletteColor);
 
     return paletteColor;
+  }, */
 
-    app.createButtonPalette(paletteColor);
+  // GENRATION DE TOUTES LES COULEURS DANS DES BOUTONS
+
+  genrationPalette: function () {
+    for (const style of app.styles) {
+      app.createButtonPalette(style);
+    }
   },
 
-  // Ajout d'un bouton sur la palette
+  // AJOUT D'UNE COULEUR DU TABLEAU "styles"
 
-  createButtonPalette: function (paletteColor) {
+  createButtonPalette: function (style) {
     const buttonPalette = document.createElement("button");
-    buttonPalette.classList.add("button-palette");
-    console.log("buttonPalette");
-    button.textContent = "b";
+    buttonPalette.classList.add("palette-color");
+    buttonPalette.classList.add("palette-color--" + style);
+    console.log(buttonPalette);
 
-    app.paletteColor.appendChid(buttonPalette);
+    app.paletteDiv.appendChild(buttonPalette);
+
+    return buttonPalette;
   },
 
   //creation du formulaire
@@ -130,11 +139,11 @@ const app = {
   // creation des inputs
   createInput: function (placeholder) {
     const input = document.createElement("input");
-
+    input.classList.add(".input");
     input.type = "number";
     input.style.textAlign = "center";
-    input.style.height = " 55px";
-    input.style.background = "#33CCCC";
+    input.style.height = "55px";
+    input.style.background = "#0099FF";
     input.style.fontSize = "20px";
     input.placeholder = placeholder;
 
@@ -144,7 +153,7 @@ const app = {
   // Formulaire complet avec les 2 input et le bouton - fonction createForm
 
   createForm: function (form) {
-    app.createInput("INVADER GAME");
+    //app.createInput("INVADER GAME");
     app.createInput("Taille de la grille");
     app.createInput("Taille des pixels");
 
@@ -177,9 +186,11 @@ const app = {
 
   // Ecouteur sur un pixel
 
-  clicPixel: function (e, pixel) {
+  /*  clicPixel: function (e, pixel) {
     const pixels = document.querySelectorAll(".pixel");
-    console.log(pixels);
+    //console.log(pixels);
+    //const targetpixel = e.target;
+    //console.log(e.target);
     pixels.forEach((pixel) => {
       pixel.addEventListener("click", (e) => {
         console.log("clic sur un pixel");
@@ -187,8 +198,26 @@ const app = {
       });
     });
   },
+
+  */
+
+  // REMOVE STYLES
+
+  removeStyles: function (targetElement) {
+    for (const style of app.styles) {
+      targetElement.classList.remove("pixel--" + style);
+    }
+  },
+
+  // Ecouteur sur un pixel avec les couleurs
+
+  clicPxelColor: function (e) {
+    const targetpixel = e.event;
+
+    app.removeStyles(targetPixel);
+
+    targetPixel.classList.add("pixel--" + app.initialColor);
+  },
 };
 
 app.init();
-
-//
