@@ -1,16 +1,16 @@
-// ----------------------------------------------------
-// ############ INVADER #############
-// ----------------------------------------------------
+// ------------------------------------------------------------
+// #################### INVADER GAME ##########################
+// ------------------------------------------------------------
 
-//CREATION D'UN OBJET "app"
+//Creation d"un objet "app"
 // Les variables deviennent des propriétés
-// Les fonctions deviennnet des méthodes
+// Les fonctions deviennent des méthodes
 // Ranger les fonction à "initialiser" dans l'application dans une méthode "init"
 // Appeler la fonction app.init() pour lancer le programme
 
-//__________________________________________________
+//__________________________________________________________
 // création d'un objet "app"
-//_________________________________________________
+//__________________________________________________________
 
 const app = {
   // Les variables sont transformées en propriété
@@ -22,9 +22,12 @@ const app = {
   paletteDiv: document.querySelector(".palette"),
   styles: ["black", "blue", "yellow", "red", "green", "gray"],
   initialColor: "black",
+
   //_______________________________________________________
   // Les fonctions sont rangées dans la méthode "init()"
   //_______________________________________________________
+
+  // On a 3 fonctions dans init()
 
   init: function () {
     // creation de la grille
@@ -37,7 +40,14 @@ const app = {
     app.genrationPalette();
   },
 
+  //____________________________________________________________
+  // *************** Creation de la grille ********************
+  //____________________________________________________________
+
+  //_________________________________________________________
   // creation des lignes
+  //_________________________________________________________
+
   createLigne: function (grid) {
     const ligne = document.createElement("div");
 
@@ -47,7 +57,11 @@ const app = {
 
     return ligne;
   },
-  // creation des pixels
+
+  //_________________________________________________________
+  // creation des pixels (qui seront dans les lignes)
+  //_________________________________________________________
+
   createPixel: function (ligne, sizePixel) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
@@ -65,7 +79,10 @@ const app = {
     return pixel;
   },
 
+  //___________________________________________________________
   // génération de la grille
+  //___________________________________________________________
+
   createGrid: function (sizeGrid, sizePixel) {
     // creation du titre du jeu
     app.createTitle();
@@ -79,7 +96,10 @@ const app = {
     }
   },
 
-  // génération titre
+  //__________________________________________________________
+  // génération nom du jeu
+  //__________________________________________________________
+
   createTitle: function (grid) {
     const title = document.createElement("div");
     title.classList.add("title");
@@ -95,34 +115,22 @@ const app = {
     app.grid.appendChild(title);
   },
 
-  // CREATION DE LA PALETTE DE COULEUR
+  //_______________________________________________________________
+  //*********** Creation de la palette de couleur *****************
+  //_______________________________________________________________
 
-  // creation de la div pour la palette
-
-  /*  createPalette: function (grid) {
-    const paletteColor = document.createElement("div");
-
-    paletteColor.classList.add("palette");
-    paletteColor.style.width = "300px";
-    paletteColor.style.height = "40px";
-    paletteColor.style.background = "#99CCFF";
-    paletteColor.style.textAlign = "center";
-    paletteColor.style.fontSize = "30px";
-
-    app.grid.appendChild(paletteColor);
-
-    return paletteColor;
-  }, */
-
+  //____________________________________________________________
   // GENRATION DE TOUS LES BOUTONS DE DIFFERENTES COULEURS
+  //____________________________________________________________
 
   genrationPalette: function () {
     for (const style of app.styles) {
       app.createButtonPalette(style);
     }
   },
-
+  //_____________________________________________________________
   // AJOUT D'UN BOUTON D'UNE COULEUR DANS LA PALETTE
+  //_____________________________________________________________
 
   createButtonPalette: function (style) {
     const buttonPalette = document.createElement("button");
@@ -132,16 +140,24 @@ const app = {
     // pose d'un écouteur quand on clique sur les couleurs de la palette
     buttonPalette.addEventListener("click", function (e) {
       console.log("la couleur couleur choisie est : " + style);
+
       app.initialColor = style;
     });
 
+    //______________________________________________________________
     // creation du bouton couleur dans la div palette
+    //______________________________________________________________
     app.paletteDiv.appendChild(buttonPalette);
   },
 
-  //creation du formulaire
+  //______________________________________________________________
+  // *****************  Creation du formulaire *******************
+  //______________________________________________________________
 
+  //______________________________________________________________
   // creation des inputs
+  //______________________________________________________________
+
   createInput: function (placeholder) {
     const input = document.createElement("input");
     input.classList.add(".input");
@@ -155,7 +171,9 @@ const app = {
     app.form.appendChild(input);
   },
 
-  // Formulaire complet avec les 2 input et le bouton - fonction createForm
+  //______________________________________________________________
+  // Génération du formulaire complet avec les 2 input et le bouton
+  //______________________________________________________________
 
   createForm: function (form) {
     //app.createInput("INVADER GAME");
@@ -174,9 +192,13 @@ const app = {
     app.form.addEventListener("submit", app.clicForm);
   },
 
-  // ECOUTEUR D'EVENEMENTS
+  //_______________________________________________________________
+  //*********** Creation ecouteur d'evenements *****************
+  //_______________________________________________________________
 
+  //______________________________________________________________
   // Ecouteur pour déclencher la création de la grille
+  //______________________________________________________________
 
   clicForm: function (e) {
     e.preventDefault();
@@ -189,24 +211,9 @@ const app = {
     app.createGrid(numberGrid, numberPixel);
   },
 
-  // Ecouteur sur un pixel
-
-  /*  clicPixel: function (e, pixel) {
-    const pixels = document.querySelectorAll(".pixel");
-    //console.log(pixels);
-    //const targetpixel = e.target;
-    //console.log(e.target);
-    pixels.forEach((pixel) => {
-      pixel.addEventListener("click", (e) => {
-        console.log("clic sur un pixel");
-        pixel.classList.toggle("pixel-black");
-      });
-    });
-  },
-
-  */
-
-  // REMOVE STYLES
+  //_______________________________________________________________
+  // fonction remove - suppression des couleurs sur la grille
+  //_______________________________________________________________
 
   removeStyles: function (targetElement) {
     for (const style of app.styles) {
@@ -214,7 +221,9 @@ const app = {
     }
   },
 
+  //_______________________________________________________________
   // Ecouteur sur un pixel avec les couleurs
+  //_______________________________________________________________
 
   clicPixelColor: function (e) {
     const targetPixel = e.target;
@@ -226,4 +235,5 @@ const app = {
   },
 };
 
+// On lance la fonction init()
 app.init();
