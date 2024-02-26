@@ -20,7 +20,7 @@ const app = {
   form: document.querySelector(".configuration"),
   grid: document.querySelector("#invader"),
   paletteDiv: document.querySelector(".palette"),
-  styles: ["black", "blue", "yellow", "red", "green"],
+  styles: ["black", "blue", "yellow", "red", "green", "gray"],
   initialColor: "black",
   //_______________________________________________________
   // Les fonctions sont rangées dans la méthode "init()"
