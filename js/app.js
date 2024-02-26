@@ -109,7 +109,7 @@ const app = {
   },
 
   //__________________________________________________________
-  // génération nom du jeu
+  // Creation du titre du jeu
   //__________________________________________________________
 
   createTitle: function (grid) {
@@ -117,7 +117,7 @@ const app = {
     title.classList.add("title");
     title.textContent = "INVADER GAME";
     title.style.width = "440px";
-    title.style.height = "50px";
+    title.style.height = "30px";
     title.style.background = "#0099CC";
     title.style.textAlign = "center";
     title.style.border = "1px solid black";
@@ -174,8 +174,8 @@ const app = {
     input.type = "number";
     input.style.textAlign = "center";
     input.style.height = "55px";
-    input.style.background = "#0099FF";
-    input.style.fontSize = "20px";
+    input.style.background = "#3399FF";
+    input.style.fontSize = "25px";
     input.placeholder = placeholder;
 
     app.form.appendChild(input);
@@ -193,10 +193,14 @@ const app = {
     const button = document.createElement("button");
     button.classList.add("button");
 
-    button.textContent = "Valider";
+    button.textContent = "VALIDER";
     button.style.borderRadius = "10px 10px 10px 10px";
     button.style.width = "120px";
+    button.style.height = "63px";
     button.style.fontSize = "20px";
+    button.style.color = "white";
+    button.style.fontWeight = "bold";
+    button.style.background = "#9900CC";
 
     app.form.appendChild(button);
     app.form.addEventListener("submit", app.clicForm);
@@ -211,7 +215,7 @@ const app = {
   //______________________________________________________________
 
   clicForm: function (e) {
-    // On ne recharge pas la page
+    // On ne recharge pas la page (dû au bouton "valider")
     e.preventDefault();
 
     // On nettoie la grille

@@ -1,4 +1,37 @@
 
+
+/* -----------------------------------------------*/
+/* Formulaires */
+/* -----------------------------------------------*/
+
+.configuration { 
+    display: flex;
+     justify-content: center;
+     padding: 20px;
+     background-color: rgb(38, 40, 109);
+}
+
+/* Texte dans le formulaire (placeholder) */ 
+::placeholder {
+    display: flex;
+    justify-content: center;
+    color : white;
+    font-size: 25px;
+}
+
+
+/* Bouton "Valider - dernier fromulaire */
+
+.button {
+    margin-left: 10px;
+}
+
+
+
+/* -----------------------------------------------*/
+/* Fond de la grille en dessus du formulaire */
+/* -----------------------------------------------*/
+
 #invader {
     /* display:grid;
     grid-template-columns:repeat(10,40px);
@@ -9,38 +42,26 @@
     padding-bottom: 40px;
 }
 
+/* Lignes de la grille */
+
 .ligne {
     display: flex;
     justify-content: center;
 }
 
+/* Pixels de la grille à la première génération */
 
 .pixel {
     background-color: gray;
 }
 
 
+/* Pixels de la grille à la première génération et après un click */
 .pixel--black, .palette-color--black {
     background-color: black;
 }
 
-
-
-.button {
-    margin-left: 10px;
-}
-
-
-.configuration { 
-    display: flex;
-     justify-content: center;
-     padding: 20px;
-     background-color: rgb(38, 40, 109);
-}
-
-
-
-
+/* Titre du jeu */ 
 .title {
     display: flex;
     justify-content: center;
@@ -49,17 +70,20 @@
     padding: 10px;
 }
 
+
+/* -----------------------------------------------*/
+/* Palette de couleur*/
+/* -----------------------------------------------*/
+
+/* Div de la palette */
 .palette {
     display: flex;
     justify-content: center;
     background-color: gray;
-    margin: 0px;
-    margin-left: 0px;
     padding: 10px;
 }
 
-
-
+/* Bouton de la palette */
 .palette-color {
     width: 50px;
     height: 50px;
@@ -68,26 +92,32 @@
     margin: 5px;
 }
 
+/* Couleur pixel gris */
 .pixel--gray, .palette-color--gray {
     background-color: gray;
 }
 
+/* Couleur pixel jaune */
 .pixel--yellow, .palette-color--yellow {
     background-color: yellow;
 }
 
+/* Couleur pixel red */
 .pixel--red, .palette-color--red {
     background-color: red;
 }
 
+/* Couleur pixel vert */
 .pixel--green, .palette-color--green {
     background-color: green;
 }
 
+/* Couleur pixel bleu */
 .pixel--blue, .palette-color--blue {
     background-color: blue;
 }
 
+/* Couleur pixel noir */
 .pixel--black, .palette-color--black {
     background-color: black;
 }
