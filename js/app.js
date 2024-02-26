@@ -2,11 +2,22 @@
 // #################### INVADER GAME ##########################
 // ------------------------------------------------------------
 
-//Creation d"un objet "app"
+// Creation d"un objet "app"
 // Les variables deviennent des propriétés
 // Les fonctions deviennent des méthodes
-// Ranger les fonction à "initialiser" dans l'application dans une méthode "init"
+// Ranger les fonctions à "initialiser" dans l'app. dans une   méthode "init"
 // Appeler la fonction app.init() pour lancer le programme
+
+//_____________________________________________________________
+//*********************  Plan d'action  ***********************
+//_____________________________________________________________
+
+//  1/ Creation de la grille (lignes, pixel, génération grille, titre)
+//  2/ Creation des formulaires (inputs, bouton validation)
+//  3/ Creation de la palette de couleur (boutons, generation palette)
+//  4/ Creation des ecouteurs d'événements (sur validation et pixels)
+//  5/ Creation de la factions "remove" sur la grille
+//  6/ Lancement de la fonction init()
 
 //__________________________________________________________
 // création d'un objet "app"
@@ -38,6 +49,8 @@ const app = {
 
     // generation palette
     app.genrationPalette();
+
+    // On ferme la fonction init()
   },
 
   //____________________________________________________________
@@ -144,9 +157,7 @@ const app = {
       app.initialColor = style;
     });
 
-    //______________________________________________________________
     // creation du bouton couleur dans la div palette
-    //______________________________________________________________
     app.paletteDiv.appendChild(buttonPalette);
   },
 
@@ -233,7 +244,11 @@ const app = {
 
     targetPixel.classList.add("pixel--" + app.initialColor);
   },
+
+  // On ferme l'objet app
 };
 
-// On lance la fonction init()
+//________________________________________________________________
+// *************** On lance la fonction init()  ******************
+//________________________________________________________________
 app.init();
