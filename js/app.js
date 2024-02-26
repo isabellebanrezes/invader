@@ -58,6 +58,7 @@ const app = {
     pixel.style.border = "1px solid black";
     // Ajout d'un écouteur d'évènement
     pixel.addEventListener("click", app.clicPixelColor);
+    console.log("j'ai cliqué");
 
     ligne.appendChild(pixel);
 
@@ -113,7 +114,7 @@ const app = {
     return paletteColor;
   }, */
 
-  // GENRATION DE TOUTES LES COULEURS DANS DES BOUTONS
+  // GENRATION DE TOUS LES BOUTONS DE DIFFERENTES COULEURS
 
   genrationPalette: function () {
     for (const style of app.styles) {
@@ -121,17 +122,21 @@ const app = {
     }
   },
 
-  // AJOUT D'UNE COULEUR DU TABLEAU "styles"
+  // AJOUT D'UN BOUTON D'UNE COULEUR DANS LA PALETTE
 
   createButtonPalette: function (style) {
     const buttonPalette = document.createElement("button");
     buttonPalette.classList.add("palette-color");
     buttonPalette.classList.add("palette-color--" + style);
     console.log(buttonPalette);
+    // pose d'un écouteur quand on clique sur les couleurs de la palette
+    buttonPalette.addEventListener("click", function (e) {
+      console.log("la couleur couleur choisie est : " + style);
+      app.initialColor = style;
+    });
 
+    // creation du bouton couleur dans la div palette
     app.paletteDiv.appendChild(buttonPalette);
-
-    return buttonPalette;
   },
 
   //creation du formulaire
@@ -177,9 +182,9 @@ const app = {
     e.preventDefault();
     app.grid.textContent = "";
 
-    const numberGrid = Number(e.target[1].value);
+    const numberGrid = Number(e.target[0].value);
 
-    const numberPixel = Number(e.target[2].value);
+    const numberPixel = Number(e.target[1].value);
 
     app.createGrid(numberGrid, numberPixel);
   },
@@ -211,8 +216,9 @@ const app = {
 
   // Ecouteur sur un pixel avec les couleurs
 
-  clicPxelColor: function (e) {
-    const targetpixel = e.event;
+  clicPixelColor: function (e) {
+    const targetPixel = e.target;
+    console.log(e.target);
 
     app.removeStyles(targetPixel);
 
