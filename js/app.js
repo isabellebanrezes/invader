@@ -81,7 +81,6 @@ const app = {
     pixel.classList.add("pixel--gray");
     pixel.style.width = sizePixel + "px";
     pixel.style.height = sizePixel + "px";
-    //pixel.style.background = "gray";
     pixel.style.border = "1px solid black";
     // Ajout d'un écouteur d'évènement
     pixel.addEventListener("click", app.clicPixelColor);
@@ -204,7 +203,7 @@ const app = {
   },
 
   //_______________________________________________________________
-  //*********** Creation ecouteur d'evenements *****************
+  //*********** Creation ecouteurs d'evenements *****************
   //_______________________________________________________________
 
   //______________________________________________________________
@@ -212,7 +211,10 @@ const app = {
   //______________________________________________________________
 
   clicForm: function (e) {
+    // On ne recharge pas la page
     e.preventDefault();
+
+    // On nettoie la grille
     app.grid.textContent = "";
 
     const numberGrid = Number(e.target[0].value);
