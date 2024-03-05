@@ -84,7 +84,7 @@ const app = {
     pixel.style.border = "1px solid black";
     // Ajout d'un écouteur d'évènement
     pixel.addEventListener("click", app.clicPixelColor);
-    console.log("j'ai cliqué");
+    //console.log("j'ai cliqué");
 
     ligne.appendChild(pixel);
 
@@ -116,7 +116,7 @@ const app = {
     const title = document.createElement("div");
     title.classList.add("title");
     title.textContent = "INVADER GAME";
-    title.style.width = "500px";
+    title.style.width = "440px";
     title.style.height = "30px";
     title.style.background = "#0099CC";
     title.style.textAlign = "center";
@@ -148,7 +148,7 @@ const app = {
     const buttonPalette = document.createElement("button");
     buttonPalette.classList.add("palette-color");
     buttonPalette.classList.add("palette-color--" + style);
-    console.log(buttonPalette);
+    //console.log(buttonPalette);
     // pose d'un écouteur quand on clique sur les couleurs de la palette
     buttonPalette.addEventListener("click", function (e) {
       console.log("la couleur couleur choisie est : " + style);
@@ -185,14 +185,24 @@ const app = {
   // Génération du formulaire complet avec les 2 input et le bouton
   //______________________________________________________________
 
-  createForm: function (form) {
-    //app.createInput("INVADER GAME");
+  createForm: function () {
+    console.log("creation de la grille complete en cours");
+
+    // creation input taille grille  par la fonction createInput
     app.createInput("Taille de la grille");
+
+    // creation input taille pixel  par la fonction createInput
     app.createInput("Taille des pixels");
 
+    // creation du bouton valider
+
+    // on créé un element type bouton dans le DOM qu'on appelle button
     const button = document.createElement("button");
+
+    // on lui ajoute un class
     button.classList.add("button");
 
+    // on lui ajoute du texte et du style
     button.textContent = "VALIDER";
     button.style.borderRadius = "10px 10px 10px 10px";
     button.style.width = "120px";
@@ -202,7 +212,10 @@ const app = {
     button.style.fontWeight = "bold";
     button.style.background = "#9900CC";
 
+    // on l'affiche dans le DOM au niveau de la div form
     app.form.appendChild(button);
+
+    // on lui pose un ecouteur d'evenement tyme submit et un handler (une fonction)
     app.form.addEventListener("submit", app.clicForm);
   },
 
@@ -214,7 +227,7 @@ const app = {
   // Ecouteur pour déclencher la création de la grille
   //______________________________________________________________
 
-  clicForm: function (e) {
+  /* clicForm: function (e) {
     // On ne recharge pas la page (dû au bouton "valider")
     e.preventDefault();
 
@@ -226,6 +239,40 @@ const app = {
     const numberPixel = Number(e.target[1].value);
 
     app.createGrid(numberGrid, numberPixel);
+  },
+  */
+
+  //Détail de cette fonction sous une autre forme
+
+  clicForm: function (e) {
+    console.log(e);
+
+    // pour ne pas recharger la page
+    e.preventDefault();
+
+    // on efface la grille existante
+    app.grid.texContent = "";
+    //console.log(e);
+
+    // on sélectionne l'input taille de la grille
+    // childNodes sert à lister les fichiers contenus dans  un répertoire - il renvoie une liste de noeud enfants de l'élement donnée avec le premier noeud affecté à l'index 0
+    const sizeGridInput = e.target.childNodes[0];
+    console.log(sizeGridInput);
+
+    // on sélectionne l'input taille des pixels
+    const sizePixelInput = e.target.childNodes[1];
+    console.log(sizePixelInput);
+
+    // on récupère la valeur de l'input  taille de la grille : nombre de ligne & colonne
+    // pour récupérer la valeur d'un formulaire  on utilise baliseNom.value
+    const numberGrid = Number(sizeGridInput.value);
+    console.log(numberGrid);
+
+    // on récupère la valeur de l'input pixel  : nombre le pixel
+    const numberPixel = Number(sizePixelInput.value);
+    console.log(numberPixel);
+
+    console.log("je génrere une nouvelle grille ");
   },
 
   //_______________________________________________________________
@@ -244,7 +291,7 @@ const app = {
 
   clicPixelColor: function (e) {
     const targetPixel = e.target;
-    console.log(e.target);
+    console.log(e);
 
     app.removeStyles(targetPixel);
 
@@ -257,4 +304,5 @@ const app = {
 //________________________________________________________________
 // *************** On lance la fonction init()  ******************
 //________________________________________________________________
+
 app.init();
